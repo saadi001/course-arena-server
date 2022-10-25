@@ -1,1 +1,1 @@
-vercel deploy server link: "[https://course-arena-sever.vercel.app/]"
+vercel deploy server link: https://course-arena-sever.vercel.app/
