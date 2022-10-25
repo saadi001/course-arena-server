@@ -7,31 +7,36 @@ app.use(cors());
 const categories = require('./data/categories.json')
 const courses = require('./data/Course.json')
 
-app.get('/', (req, res) =>{
+app.get('/', (req, res) => {
      res.send('api is running');
 })
 
-app.get('/categories', (req, res) =>{
+app.get('/categories', (req, res) => {
      res.send(categories)
 })
 
-app.get('/categories/:id', (req, res) =>{
+app.get('/categories/:id', (req, res) => {
      const id = req.params.id;
-     const categoryId = categories.filter(c => c.id == id);
-     res.send(categoryId);
+     if (id == '06') {
+          res.send(courses);
+     }
+     else {
+          const categoryId = categories.filter(c => c.id == id);
+          res.send(categoryId);
+     }
 })
 
-app.get('/courses', (req, res) =>{
+app.get('/courses', (req, res) => {
      res.send(courses);
 })
 
-app.get('/courses/:id', (req, res)=>{
+app.get('/courses/:id', (req, res) => {
      const id = req.params.id;
-     const selectedCourse = courses.find(c =>c.id == id);
-     
+     const selectedCourse = courses.find(c => c.id == id);
+
      res.send(selectedCourse);
 })
 
-app.listen(port, () =>{
+app.listen(port, () => {
      console.log('server is running at port ', port)
 })
